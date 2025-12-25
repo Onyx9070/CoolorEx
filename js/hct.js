@@ -631,11 +631,28 @@
             if (typeof $ !== 'undefined') $(btnLabel).addClass('ui-state-active');
         }
         
-        // Deactivate other buttons
-        if (typeof $ !== 'undefined') {
-             $('#sliders_buttons input').not('#'+HCT_MODE_ID).removeClass('ui-state-active').prop('checked', false);
-             try { $('#sliders_buttons').buttonset('refresh'); } catch(e){}
+        function clearOtherSliderModeButtonStates() {
+            var root = document.getElementById('sliders_buttons');
+            if (!root) return;
+            var selector = 'input, button, label, .ui-button, li';
+            var nodes = root.querySelectorAll(selector);
+            for (var i = 0; i < nodes.length; i++) {
+                var node = nodes[i];
+                if (!node) continue;
+                if (node.id === HCT_MODE_ID) continue;
+                if (node.getAttribute && node.getAttribute('for') === HCT_MODE_ID) continue;
+                node.classList && node.classList.remove('ui-state-active', 'ui-state-focus', 'ui-state-hover', 'active', 'selected', 'active-hct-btn');
+                if (node.setAttribute) node.setAttribute('aria-pressed', 'false');
+                if (node.type === 'radio' || node.type === 'checkbox') node.checked = false;
+            }
+            if (typeof $ !== 'undefined') {
+                try { $('#sliders_buttons').buttonset('refresh'); } catch (e) {}
+            }
         }
+        
+        clearOtherSliderModeButtonStates();
+        setTimeout(clearOtherSliderModeButtonStates, 0);
+        setTimeout(clearOtherSliderModeButtonStates, 50);
         
         // Force update on activation
         window._hctInitialized = false;
