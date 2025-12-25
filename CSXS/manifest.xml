@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionManifest ExtensionBundleId="com.moongorilla.coolorus2" ExtensionBundleName="Coolorus 2" ExtensionBundleVersion="2.7.1" Version="5.0">
+	<ExtensionList>
+		<Extension Id="com.moongorilla.coolorus2" Version="2.7.1" />
+	</ExtensionList>
+	<ExecutionEnvironment>
+		<HostList>			
+			<Host Name="PHXS" Version="[11.0,99.9]" />
+			<Host Name="PHSP" Version="[11.0,99.9]" />
+			<Host Name="IDSN" Version="[11.0,99.9]" />
+			<Host Name="AEFT" Version="[11.0,99.9]" />
+			<Host Name="DRWV" Version="[11.0,99.9]" />
+			<Host Name="PPRO" Version="[11.0,99.9]" />
+			<Host Name="FLPR" Version="[11.0,99.9]" />
+		</HostList>
+		<LocaleList>
+			<Locale Code="All" />
+		</LocaleList>
+		<RequiredRuntimeList>
+			<RequiredRuntime Name="CSXS" Version="5.0" />
+		</RequiredRuntimeList>
+	</ExecutionEnvironment>
+	<DispatchInfoList>
+		<Extension Id="com.moongorilla.coolorus2">
+			<DispatchInfo>
+				<Resources>
+					<MainPath>./index.html</MainPath>
+					<ScriptPath>./jsx/PHXS.jsx</ScriptPath>
+					<CEFCommandLine>
+						<Parameter>--enable-nodejs</Parameter>
+					</CEFCommandLine>
+				</Resources>
+				<Lifecycle>
+					<AutoVisible>true</AutoVisible>
+				</Lifecycle>
+				<UI>
+					<Type>Panel</Type>
+					<Menu>Coolorus 设计软件库</Menu>
+					<Geometry>
+						<MaxSize>
+							<Width>600</Width>
+							<Height>2880</Height>
+						</MaxSize>
+						<Size>
+							<Width>215</Width>
+							<Height>250</Height>
+						</Size>
+						<MinSize>
+							<Width>206</Width>
+							<Height>240</Height>
+						</MinSize>
+					</Geometry>
+					<Icons>
+		              <Icon Type="Normal">./assets/icon_light.png</Icon>
+		              <Icon Type="RollOver">./assets/icon_light.png</Icon>
+		              <Icon Type="DarkNormal">./assets/icon_dark.png</Icon>
+		              <Icon Type="DarkRollOver">./assets/icon_dark.png</Icon>
+		            </Icons>
+				</UI>
+			</DispatchInfo>
+		</Extension>
+	</DispatchInfoList>
+
+</ExtensionManifest>

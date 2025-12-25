@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+ <head>
+  <title>Coolorus 2.7.1</title>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css"  />
+  <script type="text/javascript" src="./js/test.js"></script>
+ </head>
+ <body id="body" style="background: #535353">
+  <div id="ttip" style="position: absolute;"></div>
+  <div id="preloader" class="loading-indicator"></div>
+  <div id="color_dragger" style="position: absolute; display: none; z-index: 100;">
+   <canvas id="color_dragger_canvas" width="14px" height="14px"></canvas>
+  </div>
+  <div id="content_container" style="display: none;">
+   <div class="popup hints" id="hints">
+    <div class="content">
+     <ul class="controls">
+      <li id="hints-prev"></li>
+      <li id="hints-next"></li>
+      <li id="hints-close"></li>
+     </ul>
+     <div data-locale="hints_title"></div>
+     <div id="hints-content"></div>
+     <div>
+      <p data-locale="hints_showOnStartup"></p>
+      <input type="checkbox" id="hints-show-on-start" />
+     </div>
+    </div>
+   </div>
+   <div class="popup" id="analytics-popup">
+    <div class="content">
+     <ul class="controls">
+      <li id="analytics-popup-close"></li>
+     </ul>
+     <div data-locale="analytics_popup_message"></div>
+     <div>
+      <p data-locale="analytics_popup_allowCheckbox"></p>
+      <input type="checkbox" id="analytics-popup-allow" checked="" />
+     </div>
+    </div>
+   </div>
+   <div class="popup" id="major-update">
+    <div class="content">
+     <ul class="controls">
+      <li id="major-update-close"></li>
+     </ul>
+     <iframe id="major-update-content"></iframe>
+    </div>
+   </div>
+   <div id="configuration" data-locale="config_hint"></div>
+   <div id="trial_splash" class="horizontal-center">
+    <div id="trial_version"></div>
+    <div class="trial--content">
+     <div class="opacity-70" data-locale="splash_license_header"></div>
+     <input type="text" id="splash_activate_email" placeholder="E-mail" /> 
+     <input type="text" id="splash_activate_licensekey" placeholder="License" /> 
+     <button id="splash_activate_submit" type="button" data-locale="button_activate" class="upper-space big callToAction"></button>
+     <div class="trial_btn--container">
+      <button id="trial_splash_start" type="button" data-locale="button_start_trial"></button>
+     </div>
+    </div>
+    <footer class="bottom opacity-20" data-locale="splash_footer"></footer>
+   </div>
+   <div id="picker">
+    <div id="update_available_icon" data-update="Click to update">
+     <svg width="16px" height="16px" viewbox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+       <g id="update_icon" transform="translate(2.000000, 1.000000)" fill="#E1258C">
+        <path d="M10,6.5 L9.1,9.8 L16.1,6.5 L11.7,0.2 L10.9,3.1 C2.8,1.9 1.1,8.7 1.1,8.7 C6.4,4.3 9.7,6.3 10,6.5 L10,6.5 Z M6.5,14.5 L7.4,11.2 L0.5,14.5 L4.9,20.8 L5.7,17.9 C13.8,19.1 15.5,12.3 15.5,12.3 C10.1,16.8 6.8,14.7 6.5,14.5 L6.5,14.5 Z" class="update-icon"></path>
+       </g>
+      </g>
+     </svg>
+    </div>
+    <div id="hexInputContainer" style="position: absolute; z-index: 1">
+     <input type="text" id="hexInput" maxlength="7" />
+    </div>
+    <div id="panels" class="panel-elem" style="display: none; color:#ffffff">
+			<ul id="panels_buttons" class="slider-modes" style="height: 15px;" data-title="Mode:">
+      <li><button id="panels_tab_sliders" data-locale="panels_sliders_tab" type="button"  style="line-height: 10px; color:#ffffff; font-size:6px">Sliders</button></li>
+      <li><button id="panels_tab_mixers" data-locale="panels_mixers_tab" type="button" style="line-height: 10px; color:#ffffff; font-size:6px">Mixers</button></li>
+      <li><button id="panels_tab_fix4" data-locale="panels_mixers" type="button" style="line-height: 10px; color:#ffffff; font-size:6px" onclick="e()" title="将色环颜色代码复制到剪贴板">复制代码</button></li>
+      <li>
+       <div id="panels_trial_info" class="panel-bar-trial-info"></div></li>
+     </ul>
+     <div id="panels_sliders" class="panel-elem" style="display: none">
+      <ul id="sliders_bars"></ul>
+      <ul id="sliders_buttons" class="slider-modes" data-title="Mode:">
+       <li><input id="sliders_buttons_rgb" type="button" value="RGB" /></li>
+       <li><input id="sliders_buttons_hsv" type="button" value="HSV" /></li>
+       <li><input id="sliders_buttons_lab" type="button" value="LAB" /></li>
+       <li><input id="sliders_buttons_cmyk" type="button" value="CMYK" /></li>
+       <li><input id="sliders_buttons_hct" type="button" value="HCT" /></li>
+       <li><input id="sliders_buttons_grayscale" type="button" value="B/W" /></li>
+      </ul>
+     </div>
+     <div id="panels_mixers" class="panel-elem mixers" style="display: none">
+      <div id="mixers_bars" style="position: relative;"></div>
+      <div id="mixer-controls" class="mixer-controls" style="position: relative;">
+       <canvas class="mixer-modes" id="mixers_tabs" width="100px" height="14px"></canvas>
+       <div class="mixers-load-save">
+        <button id="mixers_load">
+         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" width="100%" height="100%" viewbox="0 0 12 11" enable-background="new 0 0 12 11" xml:space="preserve">
+          <path class="mixer-save-load-icon" d="M8.4,10H1.6c-0.5,0-0.7-0.8-0.5-1.3L4,5.5C4.1,5.2,4.3,5,4.6,5h6.7c0.5,0,0.8,0.6,0.6,1.1L9,9.5 C8.9,9.8,8.6,10,8.4,10z"></path>
+          <g>
+           <g>
+            <path class="mixer-save-load-icon" d="M3,3.9h6V2H5V1.2C5,0.5,4.5,0,3.8,0H2.2C1.5,0,1,0.5,1,1.2V2H0v5.4L3,3.9z"></path>
+           </g>
+          </g>
+         </svg></button> 
+        <button id="mixers_save">
+         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" width="100%" height="100%" viewbox="0 0 12 11" enable-background="new 0 0 12 11" xml:space="preserve">
+          <defs></defs>
+          <g>
+           <g>
+            <path class="mixer-save-load-icon" d="M9,8v1H3V8H0v0c0,1.1,0.9,2,2,2h8c1.1,0,2-0.9,2-2l0,0H9z"></path>
+           </g>
+          </g>
+          <polygon class="mixer-save-load-icon" points="3,3 1,3 6,8 11,3 9,3 9,0 3,0"></polygon>
+         </svg></button>
+       </div>
+      </div>
+     </div>
+    </div>
+    <canvas id="picker_canvas" width="500px" height="500px" style="position:absolute; top: 0px; left: 0px;"></canvas>
+   </div>
+   <div id="license_and_updates" class="horizontal-center">
+    <div id="license_activate" data-title="License">
+     <div id="license_trialInfo">
+      <p id="license_trialInfoLabel" data-locale=""></p>
+      <button id="license_buy" data-locale="button_buy" type="button" class="big callToAction" onclick="redirectToBuy('license')"></button>
+     </div>
+     <div class="separator-top">
+      <p data-locale="license_activate_header"></p>
+      <input type="text" id="license_activate_email" placeholder="E-mail" class="big" /> 
+      <input type="text" id="license_activate_licensekey" placeholder="License" class="big" /> 
+      <button id="license_activate_submit" data-locale="button_activate" type="button"></button>
+     </div>
+    </div>
+    <div id="license_deactivate" data-title="License">
+     <div id="license_deactivate_text"></div>
+     <button id="license_deactivate_submit" data-locale="button_deactivate" type="button" class="upper-space"></button>
+    </div>
+    <div id="updates" data-title="Update">
+     <p id="update_info"></p>
+     <div class="buttons">
+      <button id="license_download_update" data-locale="button_download" type="button" class="upper-space"></button>
+     </div>
+    </div>
+   </div>
+   <div id="about" class="horizontal-center">
+    <div id="about_content" data-title="官网地址">
+     <a onclick="window.coolorus.host.openUrl('http://www.wszyk.cn');">http://www.wszyk.cn</a>
+     <br />
+     <!--button onclick="window.coolorus.host.openUrl('www.wszyk.cn');">访问官网</button-->
+    </div>
+    <div data-title="特别说明">
+    关注微信公众号【设计软件库】，获取最新软件版本
+     <span class="opacity-70">公众号内提供更多设计资源</span>
+
+     <br />
+     <br />感谢支持!
+    </div>
+    <footer class="bottom .opacity-20" data-locale="splash_footer"></footer>
+   </div>
+  </div>
+   <script src="js/main.js"></script>
+   <script src="js/hct.js"></script>
+    <script src="js/node.js"></script>
+   </body>
+</html>

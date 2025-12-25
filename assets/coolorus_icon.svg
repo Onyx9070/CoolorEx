@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="33px" height="34px" viewBox="0 0 33 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>coolorus_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#D3D3D3" offset="0%"></stop>
+            <stop stop-color="#888888" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+            <feGaussianBlur stdDeviation="0" in="shadowOffsetInner1" result="shadowBlurInner1"></feGaussianBlur>
+            <feComposite in="shadowBlurInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.390203238 0" in="shadowInnerInner1" type="matrix" result="shadowMatrixInner1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+                <feMergeNode in="shadowMatrixInner1"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <path d="M16.4035088,0.5 C7.33333333,0.5 0,8.02631579 0,17.0964912 C0,26.3596491 7.33333333,33.6929825 16.4035088,33.6929825 C17.9473684,33.6929825 19.2982456,33.5 20.6491228,33.1140351 C19.2982456,31.7631579 18.5263158,30.0263158 18.5263158,27.9035088 L18.5263158,27.9035088 C17.754386,28.0964912 17.1754386,28.0964912 16.4035088,28.0964912 C10.4210526,28.0964912 5.40350877,23.0789474 5.40350877,17.0964912 C5.40350877,10.9210526 10.2280702,6.09649123 16.4035088,6.09649123 C22.5789474,6.09649123 27.4035088,11.1140351 27.4035088,17.0964912 C27.4035088,18.4473684 27.2105263,19.6052632 26.8245614,20.7631579 C28.754386,20.9561404 30.4912281,22.1140351 31.6491228,23.6578947 C32.6140351,21.5350877 33,19.4122807 33,17.0964912 C32.8070175,8.02631579 25.4736842,0.5 16.4035088,0.5 L16.4035088,0.5 Z M25.6666667,23.6578947 C23.3508772,23.6578947 21.4210526,25.5877193 21.4210526,27.9035088 C21.4210526,30.2192982 23.3508772,32.1491228 25.6666667,32.1491228 C27.9824561,32.1491228 29.9122807,30.2192982 29.9122807,27.9035088 C29.9122807,25.5877193 27.9824561,23.6578947 25.6666667,23.6578947 L25.6666667,23.6578947 Z" id="coolorus-logo" fill="url(#linearGradient-1)" sketch:type="MSShapeGroup"></path>
+    </g>
+</svg>
